@@ -1,2 +1,7 @@
 # Virtual envairment and local artefacts
 /venv/
+__pycache__/
+.pytest_cache/
+
+# debugging artefacts
+**draft**
