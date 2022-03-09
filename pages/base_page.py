@@ -12,4 +12,4 @@ class BasePage(WebdriverExtension):
 
     def __init__(self, driver):
         super().__init__(driver)
-        self.header = Header(self.driver)
+        self.header = Header(self._driver)

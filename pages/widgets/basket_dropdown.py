@@ -16,7 +16,7 @@ class BasketDropDown:
             *self.DROPDOWN).click()
 
     @property
-    def total_price(self) -> float:
+    def total_cost(self) -> float:
         text = self._driver.find_element(*self.TOTAL).text
         for word in text.split():
             for symbol in word:

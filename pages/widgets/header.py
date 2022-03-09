@@ -20,7 +20,7 @@ class Header:
             *self.VIEW_BASKET).click()
 
     @property
-    def total_price(self) -> float:
+    def total_cost(self) -> float:
         block_text = self._driver.find_element(*self.BASKET_BLOCK).text
         for word in block_text.split():
             for symbol in word:
