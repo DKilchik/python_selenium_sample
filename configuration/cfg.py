@@ -2,4 +2,5 @@
 
 class Configuration:
     
-    HOST = "https://askomdch.com/"
+    HOST = "https://latest.oscarcommerce.com/"
+
