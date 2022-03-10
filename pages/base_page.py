@@ -1,5 +1,5 @@
 from utilities.webdriver.web import WebdriverExtension
-from .widgets import Header
+from .widgets import Header, NotificationAlerts
 
 class BasePage(WebdriverExtension):
 
@@ -13,3 +13,4 @@ class BasePage(WebdriverExtension):
     def __init__(self, driver):
         super().__init__(driver)
         self.header = Header(self._driver)
+        self.notification_alerts = NotificationAlerts(self._driver)
