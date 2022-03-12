@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
 from .basket_dropdown import BasketDropDown
+from utilities.allure import step
 
 class Header:
 
@@ -11,10 +12,12 @@ class Header:
         self._driver = driver
         self.basket_dropdown = BasketDropDown(self._driver)
 
+    @step
     def click_to_login_or_register(self):
         self._driver.find_element(
             *self.LOGIN_OR_REGISTER).click()
 
+    @step
     def click_to_view_basket(self):
         self._driver.find_element(
             *self.VIEW_BASKET).click()

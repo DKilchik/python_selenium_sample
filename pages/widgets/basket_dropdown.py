@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+from utilities.allure import step
 
 
 class BasketDropDown:
@@ -11,9 +12,18 @@ class BasketDropDown:
     def __init__(self, driver):
         self._driver = driver
 
+    @step
     def open(self):
         self._driver.find_element(
             *self.DROPDOWN).click()
+
+    @step
+    def should_be_1_item_in_basket(self):
+        assert self.items_number == 1, "Wrong number of items in basket"
+
+    @step
+    def should_be_more_than_0_total_cost(self):
+        assert self.total_cost > 0, "Total cost is 0"
 
     @property
     def total_cost(self) -> float:
