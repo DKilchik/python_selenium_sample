@@ -1,4 +1,5 @@
 import pytest
+import allure
 from selenium.webdriver import Chrome
 from selenium.webdriver.chrome.options import Options
 
@@ -10,6 +11,18 @@ def pytest_addoption(parser):
     # Parameter to set user language
     parser.addoption("--lang", action="store", default="en-gb", 
                      help="Set webdriver language")
+
+
+
+@pytest.hookimpl(hookwrapper=True, tryfirst=True)
+def pytest_runtest_makereport(item, call):
+    """
+    This function helps: 
+    to detect that some test failed and pass this information to teardown
+    """
+    outcome = yield 
+    rep = outcome.get_result()
+    setattr(item, "rep_" + rep.when, rep)
 
 
 
@@ -29,3 +42,21 @@ def driver(request):
     request.cls.driver = driver
     yield driver
     driver.quit()
+
+@pytest.fixture
+def log_on_failure(request, driver):
+    """
+    Generate and attach screenshot to allure report  
+    for failed test
+    """
+    yield
+    if request.node.rep_call.failed:
+        try:
+            allure.attach(
+                body=driver.get_screenshot_as_png(),
+                name="screenshot",
+                attachment_type=allure.attachment_type.PNG
+                )
+        except Exception as e:
+            # TODO remove it, when logger will be added
+            print(e)

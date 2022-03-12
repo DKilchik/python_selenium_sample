@@ -1,3 +1,5 @@
+allure-pytest==2.9.45
+allure-python-commons==2.9.45
 async-generator==1.10
 attrs==21.4.0
 certifi==2021.10.8
@@ -16,6 +18,7 @@ pyparsing==3.0.7
 PySocks==1.7.1
 pytest==7.0.1
 selenium==4.1.2
+six==1.16.0
 sniffio==1.2.0
 sortedcontainers==2.4.0
 tomli==2.0.1
